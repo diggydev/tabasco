@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aws-context="http://www.springframework.org/schema/cloud/aws/context"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/cloud/aws/context
+        http://www.springframework.org/schema/cloud/aws/context/spring-cloud-aws-context.xsd">
+    
+    <context:property-placeholder/>
+	<aws-context:context-credentials>
+		<aws-context:instance-profile-credentials />
+		<aws-context:simple-credentials
+			access-key="${aws.accessKeyId:}" secret-key="${aws.secretKey:}" />
+	</aws-context:context-credentials>
+	<aws-context:context-region region="${aws.region:eu-west-1}" />
+	<bean class="com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient" autowire="constructor">
+		<property name="region" value="#{T(com.amazonaws.regions.Region).getRegion(T(com.amazonaws.regions.Regions).fromName(${aws.region:'eu-west-1'}))}"/>
+	</bean>
+</beans>

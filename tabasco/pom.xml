@@ -9,6 +9,12 @@
 	<groupId>com.github.diggydev</groupId>
 	<artifactId>tabasco</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<org.springframework.version>4.1.0.RELEASE</org.springframework.version>
+		<org.springframework.cloud.version>1.0.0.RELEASE</org.springframework.cloud.version>
+		<junit.version>4.11</junit.version>
+		<com.amazonaws.version>1.11.13</com.amazonaws.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -17,27 +23,42 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>${org.springframework.version}</version>
 		</dependency>
-		<!-- dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk</artifactId>
-			<version>1.11.13</version>
-		</dependency-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-core</artifactId>
-			<version>1.11.13</version>
+			<version>${com.amazonaws.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
-			<version>1.11.13</version>
+			<version>${com.amazonaws.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-aws-context</artifactId>
+			<version>${org.springframework.cloud.version}</version>
 		</dependency>
 	</dependencies>
 </project>
